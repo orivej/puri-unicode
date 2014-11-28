@@ -342,6 +342,8 @@
                (or (member (car path-list) '(:absolute :relative)
                            :test #'eq))))
   (setf (uri-path uri) (render-parsed-path path-list t))
+  (setf (uri-escaped uri) (or (uri-escaped uri)
+                              (escape-p (uri-path uri))))
   (setf (.uri-parsed-path uri) path-list)
   path-list)
 
